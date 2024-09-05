@@ -24,3 +24,7 @@ const gigSchema = new mongoose.Schema({
         required: true
     }
 })
+
+const Gig = mongoose.model('Gig', gigSchema)
+
+module.exports = Gig
