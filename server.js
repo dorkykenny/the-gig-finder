@@ -31,17 +31,18 @@ app.set('view engine', 'ejs')
 app.use(methodOverride('_method'))
 app.use(morgan('dev'))
 
-app.use(passUserToView)
-app.use('/auth', authController)
-// app.use(isSignedIn)
-app.use('/gigs', gigsController)
-
 
 app.get('/', (req, res) => {
     res.render('index', {
         user: req.session.user,
     })
 })
+
+
+app.use(passUserToView)
+app.use('/auth', authController)
+app.use(isSignedIn)
+app.use('/gigs', gigsController)
 
 
 app.listen(process.env.PORT, () => {
