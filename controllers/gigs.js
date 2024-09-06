@@ -5,6 +5,9 @@ const User = require('../models/User.js')
 const Gig = require('../models/Gig.js')
 
 // C1:
+router.get('/new', (req, res) => {
+    res.render('gigs/new')
+})
 
 // C2:
 
