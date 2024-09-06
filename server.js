@@ -14,6 +14,8 @@ app.use(session({
     store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI })
 }))
 
+const isSignedIn = require('./middleware/is-signed-in.js');
+const passUserToView = require('./middleware/pass-user-to-view.js');
 const authController = require('./controllers/auth.js')
 const gigsController = require('./controllers/gigs.js')
 
@@ -29,19 +31,17 @@ app.set('view engine', 'ejs')
 app.use(methodOverride('_method'))
 app.use(morgan('dev'))
 
-
-
-app.use((req, res, next) => {
-    res.locals.user = req.session.user ? req.session.user : null
-    next()
-})
+app.use(passUserToView)
+app.use('/auth', authController)
+// app.use(isSignedIn)
+app.use('/gigs', gigsController)
 
 
 app.get('/', (req, res) => {
     res.render('index', {
         user: req.session.user,
-    });
-});
+    })
+})
 
 
 app.listen(process.env.PORT, () => {
