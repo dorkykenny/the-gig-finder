@@ -41,6 +41,11 @@ router.get('/', async (req, res) => {
 })
 
 // R2:
+router.get('/:id', async (req, res) => {
+    const gig = await Gig.findById(req.params.id).populate('owner')
+
+    res.render('gigs/show', {gig})
+})
 
 // U1:
 

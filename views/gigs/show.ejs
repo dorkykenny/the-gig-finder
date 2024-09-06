@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<h2><%= gig.name %></h2>
+
+<p>
+    <b>Date:</b> <%= gig.date %>
+</p>
+
+<p>
+    <b>Type:</b> <%= gig.type %>
+</p>
+
+<p>
+    <b>Price:</b> <%= gig.price %>
+</p>
+
+<p>
+    <b>Description:</b> <%= gig.description %>
+</p>
+
+<p>
+    <strong>Owner:</strong> <%= gig.owner.email %>
+</p>
+
+
+
+<%- include('../partials/footer') %>
