@@ -3,4 +3,14 @@
 
 <h1>Upcoming Gigs</h1>
 
+<ul>
+    <% for (const gig of gigs) { %>
+        <li>
+            <a href="/gigs/<%= gig.id %>">
+                <%= gig.name %>
+            </a>
+        </li>
+        <% } %>
+</ul>
+
 <%- include('../partials/footer') %>

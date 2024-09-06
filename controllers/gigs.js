@@ -36,7 +36,8 @@ router.post('/', async (req, res) => {
 
 // R1:
 router.get('/', async (req, res) => {
-    res.render('gigs/index')
+    const gigs = await Gig.find()
+    res.render('gigs/index', {gigs})
 })
 
 // R2:
