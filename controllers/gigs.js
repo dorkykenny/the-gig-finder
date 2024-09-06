@@ -4,6 +4,8 @@ const router = express.Router()
 const User = require('../models/User.js')
 const Gig = require('../models/Gig.js')
 
+// CRUD ROUTES:
+
 // C1:
 router.get('/new', (req, res) => {
     res.render('gigs/new')
@@ -124,5 +126,18 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+
+// GOING or NOT GOING
+
+router.post('/:id/going', async (req, res) => {
+
+    await Gig.findByIdAndUpdate(
+        req.params.id,
+        {
+            $push: {gigAttendees: req.session.user.id}
+        })
+
+        res.redirect(`/gigs/${req.params.id}`)
+})
 
 module.exports = router

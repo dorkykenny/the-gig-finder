@@ -3,6 +3,17 @@
 
 <h2><%= gig.name %></h2>
 
+<h3>
+    Gig Attendees:
+    <%= gig.gigAttendees.length %>
+</h3>
+
+<form action="/gigs/<%= gig.id %>/going" method="post">
+    <button>I AM GOING</button>
+</form>
+
+<hr>
+
 <p>
     <b>Date:</b> <%= gig.date %>
 </p>
@@ -12,7 +23,7 @@
 </p>
 
 <p>
-    <b>Price:</b> <%= gig.price %>
+    <b>Price:</b> $AUD <%= gig.price %>
 </p>
 
 <p>
