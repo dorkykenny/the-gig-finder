@@ -47,7 +47,10 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const gig = await Gig.findById(req.params.id).populate('owner')
-        res.render('gigs/show', { gig })
+
+        const userIsGoing = gig.gigAttendees.some((user) => user.equals(req.session.user.id))
+
+        res.render('gigs/show', { gig, userIsGoing })
     }
 
     catch (error) {
@@ -135,6 +138,17 @@ router.post('/:id/going', async (req, res) => {
         req.params.id,
         {
             $push: {gigAttendees: req.session.user.id}
+        })
+
+        res.redirect(`/gigs/${req.params.id}`)
+})
+
+router.delete('/:id/going', async (req, res) => {
+
+    await Gig.findByIdAndUpdate(
+        req.params.id,
+        {
+            $pull: {gigAttendees: req.session.user.id}
         })
 
         res.redirect(`/gigs/${req.params.id}`)

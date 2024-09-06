@@ -8,9 +8,17 @@
     <%= gig.gigAttendees.length %>
 </h3>
 
+<% if(userIsGoing) { %>
+    <form action="/gigs/<%= gig.id %>/going?_method=delete" method="post">
+        <b>YOU ARE GOING TO THIS GIG!</b><br><br>
+        <button>Not Going</button>
+    </form>
+
+<% } else { %>
 <form action="/gigs/<%= gig.id %>/going" method="post">
     <button>I AM GOING</button>
 </form>
+<% } %>
 
 <hr>
 
