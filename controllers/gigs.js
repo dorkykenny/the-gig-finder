@@ -20,14 +20,16 @@ router.post('/', async (req, res) => {
             description: req.body.description,
             owner: req.session.user.id
         })
-    
+
         const user = await User.findById(req.session.user.id)
-    
+
         user.myGigs.push(createdGig.id)
         await user.save()
-    
+
         res.redirect('/gigs')
-    } catch (error) {
+    }
+
+    catch (error) {
         console.log(error)
         res.redirect('/gigs')
     }
@@ -37,14 +39,20 @@ router.post('/', async (req, res) => {
 // R1:
 router.get('/', async (req, res) => {
     const gigs = await Gig.find()
-    res.render('gigs/index', {gigs})
+    res.render('gigs/index', { gigs })
 })
 
 // R2:
 router.get('/:id', async (req, res) => {
-    const gig = await Gig.findById(req.params.id).populate('owner')
+    try {
+        const gig = await Gig.findById(req.params.id).populate('owner')
+        res.render('gigs/show', { gig })
+    }
 
-    res.render('gigs/show', {gig})
+    catch (error) {
+        console.log(error)
+        res.redirect('/gigs')
+    }
 })
 
 // U1:
@@ -52,6 +60,18 @@ router.get('/:id', async (req, res) => {
 // U2:
 
 // D:
+router.delete('/:id', async (req, res) => {
+    
+    const gig = await Gig.findById(req.params.id)
+
+    if(gig.owner != req.session.user.id) {
+        res.status(403).render('error-403')
+        return
+    }
+
+    await Gig.findByIdAndDelete(req.params.id)
+    res.redirect('/gigs')
+})
 
 
 module.exports = router
