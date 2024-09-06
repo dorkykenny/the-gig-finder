@@ -33,7 +33,6 @@ router.post('/', async (req, res) => {
         console.log(error)
         res.redirect('/gigs')
     }
-
 })
 
 // R1:
@@ -57,31 +56,72 @@ router.get('/:id', async (req, res) => {
 
 // U1:
 router.get('/:id/edit', async (req, res) => {
+    try {
+        const gig = await Gig.findById(req.params.id)
 
-    const gig = await Gig.findById(req.params.id)
+        if (gig.owner != req.session.user.id) {
+            res.status(403).render('error-403')
+            return
+        }
 
-    if(gig.owner != req.session.user.id) {
-        res.status(403).render('error-403')
-        return
+        res.render('gigs/edit', { gig })
     }
 
-    res.render('gigs/edit', {gig})
+    catch (error) {
+        console.log(error)
+        res.redirect(`/gigs/${req.params.id}`)
+    }
 })
 
 // U2:
+router.put('/:id', async (req, res) => {
+    try {
+        const gigToUpdate = await Gig.findById(req.params.id)
+
+        if (gigToUpdate.owner != req.session.user.id) {
+            res.status(403).render('error-403')
+            return
+        }
+
+        const updatedGig = await Gig.findByIdAndUpdate(
+            req.params.id,
+            {
+                name: req.body.name,
+                date: req.body.date,
+                type: req.body.type,
+                price: req.body.price,
+                description: req.body.description
+            },
+            { new: true }
+        )
+
+        res.redirect(`/gigs/${req.params.id}`)
+    }
+
+    catch (error) {
+        console.log(error)
+        res.redirect(`/gigs/${req.params.id}`)
+    }
+})
 
 // D:
 router.delete('/:id', async (req, res) => {
-    
-    const gig = await Gig.findById(req.params.id)
+    try {
+        const gig = await Gig.findById(req.params.id)
 
-    if(gig.owner != req.session.user.id) {
-        res.status(403).render('error-403')
-        return
+        if (gig.owner != req.session.user.id) {
+            res.status(403).render('error-403')
+            return
+        }
+
+        await Gig.findByIdAndDelete(req.params.id)
+        res.redirect('/gigs')
     }
 
-    await Gig.findByIdAndDelete(req.params.id)
-    res.redirect('/gigs')
+    catch (error) {
+        console.log(error)
+        res.redirect('/gigs')
+    }
 })
 
 
