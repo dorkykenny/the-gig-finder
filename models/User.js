@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         ref: 'Gig'
     }]
 
-})
+}, {timestamps: true})
 
 const User = mongoose.model('User', userSchema)
 

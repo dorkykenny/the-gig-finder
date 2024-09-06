@@ -10,6 +10,29 @@ router.get('/new', (req, res) => {
 })
 
 // C2:
+router.post('/', async (req, res) => {
+    try {
+        const createdGig = await Gig.create({
+            name: req.body.name,
+            date: req.body.date,
+            type: req.body.type,
+            price: req.body.price,
+            description: req.body.description,
+            owner: req.session.user.id
+        })
+    
+        const user = await User.findById(req.session.user.id)
+    
+        user.myGigs.push(createdGig.id)
+        await user.save()
+    
+        res.redirect('/gigs')
+    } catch (error) {
+        console.log(error)
+        res.redirect('/gigs')
+    }
+
+})
 
 // R1:
 router.get('/', async (req, res) => {
