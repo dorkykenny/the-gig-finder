@@ -56,6 +56,17 @@ router.get('/:id', async (req, res) => {
 })
 
 // U1:
+router.get('/:id/edit', async (req, res) => {
+
+    const gig = await Gig.findById(req.params.id)
+
+    if(gig.owner != req.session.user.id) {
+        res.status(403).render('error-403')
+        return
+    }
+
+    res.render('gigs/edit', {gig})
+})
 
 // U2:
 

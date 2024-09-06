@@ -24,9 +24,11 @@
 </p>
 
 <% if(user.id === gig.owner.id) { %>
+    <form action="/gigs/<%= gig.id %>/edit"><button>Edit</button></form>
+    <br>
     <form action="/gigs/<%= gig.id %>?_method=delete" method="post">
     <button>Delete</button>
 <% } %>
     </form>
-    
+
 <%- include('../partials/footer') %>

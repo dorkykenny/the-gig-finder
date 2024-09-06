@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+    <h2>Edit Gig</h2>
+
+    <form action="/gigs/<%= gig.id %>?_method=put" method="post">
+        <label for="nameInput">Name:</label>
+        <input type="text" name="name" id="nameInput" required value="<%= gig.name %>">
+    
+        <br>
+    
+        <label for="dateInput">Date:</label>
+        <input type="text" name="date" id="dateInput" required value="<%= gig.date %>">
+    
+        <br>
+    
+        <label for="typeInput">Type:</label>
+        <input type="text" name="type" id="typeInput" value="<%= gig.type %>">
+
+        <br>
+
+        <label for="priceInput">Price:</label>
+        <input type="number" name="price" id="priceInput" min="0" value="<%= gig.price %>">
+
+        <br>
+
+        <label for="descriptionInput">Description:</label>
+        <textarea name="description" id="descriptionInput" required><%= gig.description %></textarea>
+
+        <br>
+
+        <button>Update</button>
+
+    </form>
+
+<%- include('../partials/footer') %>
