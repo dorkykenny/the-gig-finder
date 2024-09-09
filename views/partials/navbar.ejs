@@ -12,6 +12,7 @@
 
     <% if(user) { %>
         Welcome, <%= user.email %> |
+        <a href="/profile">My Profile</a> |
         <a href="/auth/sign-out">Sign Out</a>
 
     <% } else { %>

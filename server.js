@@ -18,6 +18,8 @@ const isSignedIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
 const authController = require('./controllers/auth.js')
 const gigsController = require('./controllers/gigs.js')
+const User = require('./models/User.js')
+const Gig = require('./models/Gig.js')
 
 mongoose.connect(process.env.MONGODB_URI)
 
@@ -41,8 +43,15 @@ app.get('/', (req, res) => {
 
 app.use(passUserToView)
 app.use('/auth', authController)
-// app.use(isSignedIn)
 app.use('/gigs', gigsController)
+
+
+app.get('/profile', isSignedIn, async (req, res) => {
+    const myGigs = await Gig.find({owner: req.session.user.id})
+    const gigsIAmGoingTo = await Gig.find({gigAttendees: req.session.user.id})
+
+    res.render('profile', {myGigs, gigsIAmGoingTo})
+})
 
 
 app.listen(process.env.PORT, () => {
