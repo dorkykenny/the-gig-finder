@@ -8,16 +8,20 @@
     <%= gig.gigAttendees.length %>
 </h3>
 
-<% if(userIsGoing) { %>
-    <form action="/gigs/<%= gig.id %>/going?_method=delete" method="post">
-        <b>YOU ARE GOING TO THIS GIG!</b><br><br>
-        <button>Not Going</button>
-    </form>
+<% if(user) { %>
 
-<% } else { %>
-<form action="/gigs/<%= gig.id %>/going" method="post">
-    <button>I AM GOING</button>
-</form>
+    <% if(userIsGoing) { %>
+        <form action="/gigs/<%= gig.id %>/going?_method=delete" method="post">
+            <b>YOU ARE GOING TO THIS GIG!</b><br><br>
+            <button>Not Going</button>
+        </form>
+
+    <% } else { %>
+    <form action="/gigs/<%= gig.id %>/going" method="post">
+        <button>I AM GOING</button>
+    </form>
+    <% } %>
+
 <% } %>
 
 <hr>
@@ -42,7 +46,7 @@
     <strong>Owner:</strong> <%= gig.owner.email %>
 </p>
 
-<% if(user.id === gig.owner.id) { %>
+<% if(user && user.id === gig.owner.id) { %>
     <form action="/gigs/<%= gig.id %>/edit"><button>Edit</button></form>
     <br>
     <form action="/gigs/<%= gig.id %>?_method=delete" method="post">

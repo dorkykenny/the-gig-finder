@@ -4,15 +4,17 @@ const router = express.Router()
 const User = require('../models/User.js')
 const Gig = require('../models/Gig.js')
 
+const isSignedIn = require('../middleware/is-signed-in.js');
+
 // CRUD ROUTES:
 
 // C1:
-router.get('/new', (req, res) => {
+router.get('/new', isSignedIn, (req, res) => {
     res.render('gigs/new')
 })
 
 // C2:
-router.post('/', async (req, res) => {
+router.post('/', isSignedIn, async (req, res) => {
     try {
         const createdGig = await Gig.create({
             name: req.body.name,
@@ -60,7 +62,7 @@ router.get('/:id', async (req, res) => {
 })
 
 // U1:
-router.get('/:id/edit', async (req, res) => {
+router.get('/:id/edit', isSignedIn, async (req, res) => {
     try {
         const gig = await Gig.findById(req.params.id)
 
@@ -79,7 +81,7 @@ router.get('/:id/edit', async (req, res) => {
 })
 
 // U2:
-router.put('/:id', async (req, res) => {
+router.put('/:id', isSignedIn, async (req, res) => {
     try {
         const gigToUpdate = await Gig.findById(req.params.id)
 
@@ -110,7 +112,7 @@ router.put('/:id', async (req, res) => {
 })
 
 // D:
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isSignedIn, async (req, res) => {
     try {
         const gig = await Gig.findById(req.params.id)
 
