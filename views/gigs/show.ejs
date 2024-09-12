@@ -26,6 +26,7 @@
 
 <% } %>
 
+<br>
 <hr>
 
 <p>
@@ -50,9 +51,11 @@
 
 </div>
 
+<br>
+
 <% if(user && user.id === gig.owner.id) { %>
     <form action="/gigs/<%= gig.id %>/edit"><button id="edit">Edit</button></form>
-    <br>
+    <br><br>
     <form action="/gigs/<%= gig.id %>?_method=delete" method="post">
     <button id="delete">Delete</button>
 <% } %>

@@ -5,8 +5,8 @@
 
 <hr>
 
-<h3 class="profile-subtitle">My Gigs</h3>
-<div class="profile-gigs">
+<div class="gig-list-profile">
+<h2 class="profile-subtitle">My Gigs</h3>
 <% for (const gig of myGigs) { %>
     <ul>
         <li><a href="/gigs/<%= gig.id %>"><%= gig.name %></a></li>
@@ -15,7 +15,7 @@
 
 <hr>
 
-<h3 class="profile-subtitle">Gigs I Am Going To</h3>
+<h2 class="profile-subtitle">Gigs I Am Going To</h3>
 <% for (const gig of gigsIAmGoingTo) { %>
     <ul>
         <li><a href="/gigs/<%= gig.id %>"><%= gig.name %></a></li>
