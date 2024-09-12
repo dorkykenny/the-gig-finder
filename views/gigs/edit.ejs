@@ -1,36 +1,39 @@
 <%- include('../partials/header') %>
-<%- include('../partials/navbar') %>
+    <%- include('../partials/navbar') %>
 
-    <h2>Edit Gig</h2>
+        <h1 class="edit-title">Edit Gig</h1>
 
-    <form action="/gigs/<%= gig.id %>?_method=put" method="post">
-        <label for="nameInput">Name:</label>
-        <input type="text" name="name" id="nameInput" required value="<%= gig.name %>">
-    
-        <br>
-    
-        <label for="dateInput">Date:</label>
-        <input type="text" name="date" id="dateInput" required value="<%= gig.date %>">
-    
-        <br>
-    
-        <label for="typeInput">Type:</label>
-        <input type="text" name="type" id="typeInput" value="<%= gig.type %>">
+        <div class="edit-form">
+            <form action="/gigs/<%= gig.id %>?_method=put" method="post">
+                <label for="nameInput"><b>Name:</b></label>
+                <input type="text" name="name" id="nameInput" required value="<%= gig.name %>">
 
-        <br>
+                <br><br>
 
-        <label for="priceInput">Price:</label>
-        <input type="number" name="price" id="priceInput" min="0" value="<%= gig.price %>">
+                <label for="dateInput"><b>Date:</b></label>
+                <input type="text" name="date" id="dateInput" required value="<%= gig.date %>">
 
-        <br>
+                <br><br>
 
-        <label for="descriptionInput">Description:</label>
-        <textarea name="description" id="descriptionInput" required><%= gig.description %></textarea>
+                <label for="typeInput"><b>Type:</b></label>
+                <input type="text" name="type" id="typeInput" value="<%= gig.type %>">
 
-        <br>
+                <br><br>
 
-        <button>Update</button>
+                <label for="priceInput"><b>Price:</b></label>
+                <input type="number" name="price" id="priceInput" min="0" value="<%= gig.price %>">
 
-    </form>
+                <br><br>
 
-<%- include('../partials/footer') %>
+                <label for="descriptionInput"><b>Description:<b></label>
+                <textarea name="description" id="descriptionInput" required><%= gig.description %></textarea>
+
+                <br><br>
+
+                <button id="update">Update</button>
+
+            </form>
+
+        </div>
+
+        <%- include('../partials/footer') %>

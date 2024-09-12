@@ -1,33 +1,33 @@
 <%- include('../partials/header') %>
 <%- include('../partials/navbar') %>
 
-    <h1>Create a Gig</h1>
+    <h1 class="create-title">Create a Gig</h1>
 
     <form action="/gigs" method="post">
-        <label for="nameInput">Name:</label>
+        <label for="nameInput"><b>Name:</b></label>
         <input type="text" name="name" id="nameInput" required>
     
-        <br>
+        <br><br>
     
-        <label for="dateInput">Date:</label>
+        <label for="dateInput"><b>Date:</b></label>
         <input type="text" name="date" id="dateInput" required>
     
-        <br>
+        <br><br>
     
-        <label for="typeInput">Type:</label>
+        <label for="typeInput"><b>Type:</b></label>
         <input type="text" name="type" id="typeInput">
 
-        <br>
+        <br><br>
 
-        <label for="priceInput">Price:</label>
+        <label for="priceInput"><b>Price:</b></label>
         <input type="number" name="price" id="priceInput" min="0">
 
-        <br>
+        <br><br>
 
-        <label for="descriptionInput">Description:</label>
+        <label for="descriptionInput"><b>Description:</b></label>
         <textarea name="description" id="descriptionInput" required></textarea>
 
-        <br>
+        <br><br>
 
         <button id="create">Create</button>
 

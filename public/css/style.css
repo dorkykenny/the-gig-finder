@@ -1,16 +1,17 @@
 body {
     background-color: bisque;
+    font-family: 'Roboto', Verdana, Tahoma, sans-serif;
 }
 
-#gig-list {
-    font-family: 'Roboto';
+.gig-list {
+    font-family: 'Roboto', Verdana, Tahoma, sans-serif;
     font-weight: 700;
     font-size: 20px;
     list-style: none;
 }
 
 nav {
-    font-family: 'Protest Guerrilla';
+    font-family: 'Protest Guerrilla', Verdana, Tahoma, sans-serif;
     font-size: 20px;
     padding-bottom: 15px;
 }
@@ -32,28 +33,42 @@ h1 {
     text-align: center;
 }
 
+.gig-name, .edit-title, .create-title, .profile-title, .sign-in-title, .sign-up-title {
+    text-align: left;
+}
+
+.profile-subtitle {
+    font-family: 'Protest Guerrilla', Verdana, Tahoma, sans-serif;
+}
+
 #going {
-    font-family: 'Roboto';
+    font-family: 'Roboto', Verdana, Tahoma, sans-serif;
     font-weight: 700;
 }
 
 #not-going {
-    font-family: 'Roboto';
+    font-family: 'Roboto', Verdana, Tahoma, sans-serif;
     font-weight: 700;
 }
 
 #edit {
-    font-family: 'Roboto';
+    font-family: 'Roboto', Verdana, Tahoma, sans-serif;
     font-weight: 700;
 }
 
 #delete {
-    font-family: 'Roboto';
+    font-family: 'Roboto', Verdana, Tahoma, sans-serif;
     font-weight: 700;
 }
 
-#create {
-    font-family: 'Roboto';
+#create, #update {
+    font-family: 'Roboto', Verdana, Tahoma, sans-serif;
+    font-weight: 700;
+}
+
+
+.auth-button {
+    font-family: 'Roboto', Verdana, Tahoma, sans-serif;
     font-weight: 700;
 }
 
@@ -74,4 +89,13 @@ h1 {
 
 .all-gigs {
     text-align: center;
+}
+
+.attendees {
+    font-family: 'Protest Guerrilla', Verdana, Tahoma, sans-serif;
+}
+
+.profile-gigs {
+    font-size: 15px;
+    font-weight: 500;
 }

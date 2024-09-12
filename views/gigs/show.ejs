@@ -1,13 +1,15 @@
 <%- include('../partials/header') %>
 <%- include('../partials/navbar') %>
 
-<h2><%= gig.name %></h2>
+<h1 class="gig-name"><%= gig.name %></h1>
 
-<h3>
+
+<h3 class="attendees">
     Gig Attendees:
     <%= gig.gigAttendees.length %>
 </h3>
 
+<div class="show-body">
 <% if(user) { %>
 
     <% if(userIsGoing) { %>
@@ -45,6 +47,8 @@
 <p>
     <strong>Owner:</strong> <%= gig.owner.email %>
 </p>
+
+</div>
 
 <% if(user && user.id === gig.owner.id) { %>
     <form action="/gigs/<%= gig.id %>/edit"><button id="edit">Edit</button></form>

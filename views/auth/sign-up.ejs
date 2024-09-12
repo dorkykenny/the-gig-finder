@@ -1,18 +1,24 @@
 <%- include('../partials/header') %>
 <%- include('../partials/navbar') %>
 
-    <h1>Create an account</h1>
+    <h1 class="sign-up-title">Create an account</h1>
     <form action="/auth/sign-up" method="post">
-        <label for="email">Email:</label>
+        <label for="email"><b>Email:</b></label>
         <input type="text" name="email" id="email" required>
 
-        <label for="password">Password:</label>
+        <br><br>
+
+        <label for="password"><b>Password:</b></label>
         <input type="password" name="password" id="password" required>
 
-        <label for="confirmPassword">Confirm Password:</label>
+        <br><br>
+
+        <label for="confirmPassword"><b>Confirm Password:</b></label>
         <input type="password" name="confirmPassword" id="confirmPassword" required>
 
-        <button type="submit">Sign up</button>
+        <br><br>
+
+        <button type="submit" class="auth-button">Sign Up</button>
     </form>
 
 <%- include('../partials/footer') %>

@@ -1,11 +1,12 @@
 <%- include('./partials/header') %>
 <%- include('./partials/navbar') %>
 
-<h1>My Profile</h1>
+<h1 class="profile-title">My Profile</h1>
 
 <hr>
 
-<h3>My Gigs</h3>
+<h3 class="profile-subtitle">My Gigs</h3>
+<div class="profile-gigs">
 <% for (const gig of myGigs) { %>
     <ul>
         <li><a href="/gigs/<%= gig.id %>"><%= gig.name %></a></li>
@@ -14,11 +15,12 @@
 
 <hr>
 
-<h3>Gigs I Am Going To</h3>
+<h3 class="profile-subtitle">Gigs I Am Going To</h3>
 <% for (const gig of gigsIAmGoingTo) { %>
     <ul>
         <li><a href="/gigs/<%= gig.id %>"><%= gig.name %></a></li>
     </ul>
 <% } %>
+</div>
 
 <%- include('./partials/footer') %>
