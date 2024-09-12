@@ -3,7 +3,10 @@
 
 <h1>Upcoming Gigs</h1>
 
-<ul>
+<div class="all-gigs">
+<img src="/img/party.jpg" alt="people partying at a club" class="all-gigs-img">
+
+<ul id="gig-list">
     <% for (const gig of gigs) { %>
         <li>
             <a href="/gigs/<%= gig.id %>">
@@ -12,5 +15,6 @@
         </li>
         <% } %>
 </ul>
+</div>
 
 <%- include('../partials/footer') %>

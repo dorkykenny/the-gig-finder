@@ -14,6 +14,8 @@ app.use(session({
     store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI })
 }))
 
+app.use(express.static('public'))
+
 const isSignedIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
 const authController = require('./controllers/auth.js')
@@ -28,7 +30,6 @@ mongoose.connection.on('connected', () => {
 })
 
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static('public'))
 app.set('view engine', 'ejs')
 app.use(methodOverride('_method'))
 app.use(morgan('dev'))

@@ -1,4 +1,5 @@
 <nav>
+    <div class="left">
     <a href="/">Home</a>
     |
     <a href="/gigs">Gigs</a>
@@ -8,8 +9,7 @@
     <a href="/gigs/new">Create a Gig</a>
     <% } %>
 
-    <br>
-
+    </div><div class="right">
     <% if(user) { %>
         Welcome, <%= user.email %> |
         <a href="/profile">My Profile</a> |
@@ -20,5 +20,6 @@
         |
         <a href="/auth/sign-up">Sign Up</a>
     <% } %>
+    </div>
     
 </nav>

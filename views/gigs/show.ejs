@@ -13,12 +13,12 @@
     <% if(userIsGoing) { %>
         <form action="/gigs/<%= gig.id %>/going?_method=delete" method="post">
             <b>YOU ARE GOING TO THIS GIG!</b><br><br>
-            <button>Not Going</button>
+            <button id="not-going">Not Going</button>
         </form>
 
     <% } else { %>
     <form action="/gigs/<%= gig.id %>/going" method="post">
-        <button>I AM GOING</button>
+        <button id="going">I AM GOING</button>
     </form>
     <% } %>
 
@@ -47,10 +47,10 @@
 </p>
 
 <% if(user && user.id === gig.owner.id) { %>
-    <form action="/gigs/<%= gig.id %>/edit"><button>Edit</button></form>
+    <form action="/gigs/<%= gig.id %>/edit"><button id="edit">Edit</button></form>
     <br>
     <form action="/gigs/<%= gig.id %>?_method=delete" method="post">
-    <button>Delete</button>
+    <button id="delete">Delete</button>
 <% } %>
     </form>
 
