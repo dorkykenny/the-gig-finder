@@ -106,3 +106,7 @@ h1 {
 .attendees {
     font-family: 'Protest Guerrilla', Verdana, Tahoma, sans-serif;
 }
+
+a, a:active {
+    color: purple;
+}
